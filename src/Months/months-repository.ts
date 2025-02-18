@@ -1,3 +1,4 @@
+import Connection from "../Config/dbConfing";
 
 export default interface MonthsDao {
     find(id: string | null): Promise<any>;
@@ -6,6 +7,8 @@ export default interface MonthsDao {
 
 export class MonthsDaoPostgres implements MonthsDao
 {
+  constructor(readonly DBConnection: Connection) {}
+  
   async find(id: string | null): Promise<any> 
   {
     return "oie"

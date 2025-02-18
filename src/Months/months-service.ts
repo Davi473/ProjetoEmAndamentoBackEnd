@@ -1,11 +1,11 @@
+import { MonthsDaoPostgres } from "./months-repository";
+
 export default class MonthsService
 {
-  constructor(readonly repository: any) {}
+  constructor(readonly repository: MonthsDaoPostgres) {}
 
   async get(id: string | null = null)
   {
-    let months;
-    if (id)  months = await this.repository.get(id);
-    if (!id) months = await this.repository.get();
+    const months = await this.repository.find(id);
   }
 }
